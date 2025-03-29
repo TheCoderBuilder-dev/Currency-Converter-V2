@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstantCurrency Browser Mockup</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .browser-frame {
+            width: 800px;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+        .browser-header {
+            height: 40px;
+            background-color: #f1f3f4;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .browser-buttons {
+            display: flex;
+            gap: 6px;
+            margin-right: 10px;
+        }
+        .browser-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background-color: #ff5f57; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #28c940; }
+        .address-bar {
+            flex: 1;
+            height: 28px;
+            background-color: white;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 13px;
+            color: #555;
+        }
+        .browser-content {
+            height: calc(100% - 40px);
+            background-color: white;
+            position: relative;
+        }
+        .extension-popup {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 320px;
+            height: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        .popup-header {
+            background: linear-gradient(to right, #4361ee, #7209b7);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .popup-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .popup-content {
+            padding: 15px;
+        }
+        .converter-form {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+        .currency-input {
+            display: flex;
+            gap: 10px;
+        }
+        .currency-select {
+            width: 80px;
+            height: 36px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0 10px;
+        }
+        .amount-input {
+            flex: 1;
+            height: 36px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0 10px;
+        }
+        .swap-button {
+            width: 36px;
+            height: 36px;
+            background-color: #f1f3f4;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        .result-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .result-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4361ee;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        .tab {
+            padding: 10px 15px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .tab.active {
+            border-bottom: 2px solid #4361ee;
+            color: #4361ee;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="browser-frame">
+        <div class="browser-header">
+            <div class="browser-buttons">
+                <div class="browser-button red"></div>
+                <div class="browser-button yellow"></div>
+                <div class="browser-button green"></div>
+            </div>
+            <div class="address-bar">https://www.example.com</div>
+        </div>
+        <div class="browser-content">
+            <div class="extension-popup">
+                <div class="popup-header">
+                    <div class="popup-title">InstantCurrency</div>
+                    <div class="popup-settings">⚙️</div>
+                </div>
+                <div class="popup-content">
+                    <div class="converter-form">
+                        <div class="form-group">
+                            <label>From</label>
+                            <div class="currency-input">
+                                <select class="currency-select">
+                                    <option>USD</option>
+                                </select>
+                                <input type="text" class="amount-input" value="1.00">
+                            </div>
+                        </div>
+                        <div class="swap-button">↑↓</div>
+                        <div class="form-group">
+                            <label>To</label>
+                            <div class="currency-input">
+                                <select class="currency-select">
+                                    <option>EUR</option>
+                                </select>
+                                <input type="text" class="amount-input" value="0.93" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-section">
+                        <div class="result-title">Conversion Result</div>
+                        <div class="result-value">1 USD = 0.93 EUR</div>
+                    </div>
+                    <div class="tabs">
+                        <div class="tab active">Convert</div>
+                        <div class="tab">History</div>
+                        <div class="tab">Favorites</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
